@@ -6,7 +6,7 @@ import Pet from './Pet'
 
 export const PetList = (props) => {
     return props.nestedPetListFromApp.map((pet) => 
-    <Pet key={pet.id} pet={pet} />);
+    <Pet key={pet.id} pet={pet} onClickHandler ={props.onClickHandler} />);
 };
 
 export default PetList;

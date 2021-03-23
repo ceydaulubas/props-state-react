@@ -3,6 +3,9 @@ import { Component } from 'react';
 import './App.css';
 
 import PetList from '../Pets/PetList'
+import Counter from '../Counter/Counter'
+import CounterOldState from '../Counter/CounterOldState'
+import CounterHook from '../Counter/CounterHook'
 
 
 const nestedPetList = [
@@ -26,18 +29,29 @@ const nestedPetList = [
 
 /* Class Component */
 
-class App extends Component{
-  render(){
-    return(
+class App extends Component {
+  state={
+    selectedPet: "",
+  }
+handleSelectedClick = (incomingPet) => {
+  this.setState({selectedPet: incomingPet  })
+}
+
+  render() {
+    return (
       <section className="app">
         <h1>Props</h1>
+        <p>
+          The selected pet is <b>{this.state.selectedPet.name}</b>
+        </p>
         <div className="container">
-        <PetList  nestedPetListFromApp ={nestedPetList} />
+          <PetList nestedPetListFromApp={nestedPetList} onClickHandler={this.handleSelectedClick}/>
         </div>
         <h1>State</h1>
         <div className="container">
-
-          
+          <Counter />
+          <CounterOldState />
+          <CounterHook />
         </div>
       </section>
     )
